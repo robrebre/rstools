@@ -117,7 +117,7 @@ def drop_execute_recreate(conn, table, sql):
 
   # Sort by depth desc, and drop duplicates, keeping the last instance (lowest depth) 
   df.sort_values('depth', ascending=False, inplace=True)
-  df.drop_duplicates( subset=['schema', 'name', 'owner', 'definition'], keep='last', inplace=True) 
+  df.drop_duplicates( subset=['schema', 'name', 'owner', 'definition'], keep='first', inplace=True) 
 
   # Drop all dependent views - could use cascade on base view, but this is safer
   for a in range(0, len(df)):
